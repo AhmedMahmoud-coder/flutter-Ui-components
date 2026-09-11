@@ -12,134 +12,85 @@ class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 251, 249, 249),
-        body: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Stack(
-                children: [
-                  ClipPath(
-                    clipper: WaveClipper(),
-                    child: Container(
-                      width: double.infinity,
-                      height: 450,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Color.fromARGB(184, 255, 21, 130),
-                            Color.fromARGB(135, 223, 10, 81),
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-
-                        /* borderRadius: BorderRadius.vertical(
-                          bottom: Radius.elliptical(400, 200),
-                        ),*/
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Container(
-                margin: EdgeInsets.all(1),
-                padding: EdgeInsets.all(15),
-                child: Text(
-                  "Welcome",
-                  style: TextStyle(
-                    fontSize: 23,
-                    fontStyle: FontStyle.italic,
-                    fontWeight: FontWeight.bold,
+      backgroundColor: Color(0xFFDDDDDD),
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
+              children: [
+                // ignore: sized_box_for_whitespace
+                Container(
+                  width: double.infinity,
+                  height: 450, 
+                  child: Image.asset(
+                    "images/Frame.png",
+                    fit: BoxFit.cover,
+                    alignment: Alignment
+                        .bottomCenter, 
                   ),
                 ),
-              ),
-
-              Container(
-                margin: EdgeInsets.only(left: 10),
-                child: Text(
-                  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus consectetur nulla eveniet architecto eaque tempore?",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: Color.fromARGB(255, 150, 150, 158),
-                  ),
+              ],
+            ),
+            Container(
+              margin: EdgeInsets.all(1),
+              padding: EdgeInsets.all(15),
+              child: Text(
+                "Welcome",
+                style: TextStyle(
+                  fontSize: 23,
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 60),
-              Row(
-                children: [
-                  Spacer(),
-                  // ignore: avoid_unnecessary_containers
-                  Container(
-                    child: Text(
-                      "Continue",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Color.fromARGB(255, 150, 150, 158),
-                      ),
-                    ),
-                  ),
-                  // ignore: avoid_unnecessary_containers
-                  Container(
-                    child: IconButton(
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Loginpage()),
-                        );
-                      },
-                      icon: Icon(
-                        Icons.arrow_circle_right_rounded,
-                        color: Color.fromARGB(163, 163, 27, 127),
-                        size: 50,
-                      ),
-                    ),
-                  ),
-                ],
+            ),
+
+            Container(
+              margin: EdgeInsets.only(left: 10),
+              child: Text(
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus consectetur nulla eveniet architecto eaque tempore?",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Color.fromARGB(255, 150, 150, 158),
+                ),
               ),
-            ],
-          ),
-        )
-
+            ),
+            SizedBox(height: 60),
+            Row(
+              children: [
+                Spacer(),
+                // ignore: avoid_unnecessary_containers
+                Container(
+                  child: Text(
+                    "Continue",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xFF737373),
+                    ),
+                  ),
+                ),
+                // ignore: avoid_unnecessary_containers
+                Container(
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Loginpage()),
+                      );
+                    },
+                    icon: Icon(
+                      Icons.arrow_circle_right_rounded,
+                      color: Color.fromARGB(163, 163, 27, 127),
+                      size: 50,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
-  }
-}
-
-
-
-
-
-
-class WaveClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    Path path = Path();
-
-    path.lineTo(0, size.height * 0.6);
-
-    path.quadraticBezierTo(
-      size.width * 0.3,
-      size.height * 0.45,
-      size.width * 0.6,
-      size.height * 0.75,
-    );
-
-    path.quadraticBezierTo(
-      size.width * 0.85,
-      size.height * 1.0,
-      size.width,
-      size.height * 0.7,
-    );
-
-    path.lineTo(size.width, 0);
-    path.close();
-
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) {
-    return false;
   }
 }
